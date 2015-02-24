@@ -1,0 +1,12 @@
+dbVendor=mysql 
+dbConnectString=dbi:mysql:orthomcl:localhost:3306
+dbLogin=orthomcl
+dbPassword=orthomcl
+similarSequencesTable=SimilarSequences110
+orthologTable=Ortholog110
+inParalogTable=InParalog110
+coOrthologTable=CoOrtholog110
+interTaxonMatchView=InterTaxonMatch110
+percentMatchCutoff=70
+evalueExponentCutoff=0.000010
+oracleIndexTblSpc=NONE

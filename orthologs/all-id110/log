@@ -1,0 +1,270 @@
+
+
+CREATE TABLE SimilarSequences110  (
+ QUERY_ID                 VARCHAR(40),
+ SUBJECT_ID               VARCHAR(40),
+ QUERY_TAXON_ID           VARCHAR(40),
+ SUBJECT_TAXON_ID         VARCHAR(40),
+ EVALUE_MANT              FLOAT, 
+ EVALUE_EXP               INT,
+ PERCENT_IDENTITY         FLOAT,
+ PERCENT_MATCH            FLOAT
+)
+
+
+CREATE UNIQUE INDEX ss_qtaxexp_ix 
+ON SimilarSequences110(query_id, subject_taxon_id,
+evalue_exp, evalue_mant,
+query_taxon_id, subject_id)
+
+
+CREATE UNIQUE INDEX ss_seqs_ix 
+ON SimilarSequences110(query_id, subject_id,
+evalue_exp, evalue_mant, percent_match)
+
+
+CREATE TABLE InParalog110  (
+ SEQUENCE_ID_A           VARCHAR(40),
+ SEQUENCE_ID_B           VARCHAR(40),
+ TAXON_ID                VARCHAR(40),
+ UNNORMALIZED_SCORE      FLOAT,
+ NORMALIZED_SCORE        FLOAT
+)
+
+ 
+CREATE TABLE Ortholog110  (
+ SEQUENCE_ID_A           VARCHAR(40),
+ SEQUENCE_ID_B           VARCHAR(40),
+ TAXON_ID_A              VARCHAR(40),
+ TAXON_ID_B              VARCHAR(40),
+ UNNORMALIZED_SCORE      FLOAT,
+ NORMALIZED_SCORE        FLOAT
+)
+
+
+CREATE INDEX ortholog_seq_a_ix  
+ON Ortholog110(sequence_id_a)
+
+
+CREATE INDEX ortholog_seq_b_ix 
+ON Ortholog110(sequence_id_b)
+
+
+CREATE TABLE CoOrtholog110  (
+ SEQUENCE_ID_A           VARCHAR(40),
+ SEQUENCE_ID_B           VARCHAR(40),
+ TAXON_ID_A              VARCHAR(40),
+ TAXON_ID_B              VARCHAR(40),
+ UNNORMALIZED_SCORE      FLOAT,
+ NORMALIZED_SCORE        FLOAT
+)
+
+
+CREATE OR REPLACE VIEW InterTaxonMatch110 
+	AS SELECT ss.query_id, ss.subject_id, ss.subject_taxon_id, 
+	ss.evalue_mant, ss.evalue_exp 
+	FROM SimilarSequences110 ss 
+	WHERE ss.subject_taxon_id != ss.query_taxon_id
+
+
+============================================================================================
+Wed May 18 15:40:30 2011 orthomclPairs orthomcl_config log cleanup=only
+=============================================================================================
+
+Wed May 18 15:40:30 2011 configuration: dbVendor=mysql
+Wed May 18 15:40:30 2011 configuration: dbConnectString=dbi:mysql:orthomcl:localhost:3306
+Wed May 18 15:40:30 2011 configuration: dbLogin=orthomcl
+Wed May 18 15:40:30 2011 configuration: dbPassword=********
+Wed May 18 15:40:30 2011 configuration: similarSequencesTable=SimilarSequences110
+Wed May 18 15:40:30 2011 configuration: orthologTable=Ortholog110
+Wed May 18 15:40:30 2011 configuration: inParalogTable=InParalog110
+Wed May 18 15:40:30 2011 configuration: coOrthologTable=CoOrtholog110
+Wed May 18 15:40:30 2011 configuration: interTaxonMatchView=InterTaxonMatch110
+Wed May 18 15:40:30 2011 configuration: percentMatchCutoff=70
+Wed May 18 15:40:30 2011 configuration: evalueExponentCutoff=0.000010
+Wed May 18 15:40:30 2011 configuration: oracleIndexTblSpc=NONE
+Wed May 18 15:40:30 2011   cleaning: drop table BestQueryTaxonScore
+Wed May 18 15:40:34 2011   done
+Wed May 18 15:40:34 2011   cleaning: drop table BestHit
+Wed May 18 15:40:39 2011   done
+Wed May 18 15:40:39 2011   cleaning: drop table OrthologTemp
+Wed May 18 15:40:40 2011   done
+Wed May 18 15:40:40 2011   cleaning: drop table OrthologAvgScore
+Wed May 18 15:40:40 2011   done
+Wed May 18 15:40:40 2011   cleaning: drop table OrthologTaxon
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table BestInterTaxonScore
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table UniqueSimSeqsQueryId
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table BetterHit
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table OrthologUniqueId
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table InParalogTaxonAvg
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table InParalogOrthologTaxonAvg
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table InParalogAvgScore
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table InParalogTemp
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table Ortholog2Way
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table InParalog2Way
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table InParalogOrthologInParalog
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table InParalogOrtholog
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table CoOrthologCandidate
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table CoOrthologNotOrtholog
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table CoOrthologTemp
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table CoOrthologAvgScore
+Wed May 18 15:40:41 2011   done
+Wed May 18 15:40:41 2011   cleaning: drop table CoOrthologTaxon
+Wed May 18 15:40:41 2011   done
+
+
+============================================================================================
+Wed May 18 15:40:41 2011 orthomclPairs orthomcl_config log cleanup=no
+=============================================================================================
+
+Wed May 18 15:40:41 2011 configuration: dbVendor=mysql
+Wed May 18 15:40:41 2011 configuration: dbConnectString=dbi:mysql:orthomcl:localhost:3306
+Wed May 18 15:40:41 2011 configuration: dbLogin=orthomcl
+Wed May 18 15:40:41 2011 configuration: dbPassword=********
+Wed May 18 15:40:41 2011 configuration: similarSequencesTable=SimilarSequences110
+Wed May 18 15:40:41 2011 configuration: orthologTable=Ortholog110
+Wed May 18 15:40:41 2011 configuration: inParalogTable=InParalog110
+Wed May 18 15:40:41 2011 configuration: coOrthologTable=CoOrtholog110
+Wed May 18 15:40:41 2011 configuration: interTaxonMatchView=InterTaxonMatch110
+Wed May 18 15:40:41 2011 configuration: percentMatchCutoff=70
+Wed May 18 15:40:41 2011 configuration: evalueExponentCutoff=0.000010
+Wed May 18 15:40:41 2011 configuration: oracleIndexTblSpc=NONE
+Wed May 18 15:40:41 2011 Constructing common temp tables
+Wed May 18 15:40:41 2011   Find min evalue exp  (OrthoMCL-DB V2 took ??? for this step)
+Wed May 18 15:41:17 2011   done
+Wed May 18 15:41:17 2011   updating SimilarSequences110, setting 0 evalue_exp to underflow value (-180 - 1)  (Benchmark dataset took 25 min for this step)
+Wed May 18 15:45:50 2011   step 'updateMinimumEvalueExponent' done (4 mins)
+
+Wed May 18 15:45:50 2011   create BestQueryTaxonScore  (Benchmark dataset took 1.5 hours for this step)
+Wed May 18 15:53:45 2011   step 'bestQueryTaxonScore' done (7 mins)
+
+Wed May 18 15:53:45 2011   create qtscore_ix index on BestQueryTaxonScore  (Benchmark dataset took 15 min for this step)
+Wed May 18 15:56:05 2011   step 'qtscore_ix' done (2 mins)
+
+Wed May 18 15:56:05 2011 Constructing ortholog tables
+Wed May 18 15:56:05 2011   create BestHit  (Benchmark dataset took 1.5 hours for this step)
+Wed May 18 16:02:17 2011   step 'bestHit' done (6 mins)
+
+Wed May 18 16:02:17 2011   create best_hit_ix index on BestHit  (Benchmark dataset took 15 min for this step)
+Wed May 18 16:04:01 2011   step 'best_hit_ix' done (1 mins)
+
+Wed May 18 16:04:01 2011   create OrthologTemp table  (Benchmark dataset took 5 min for this step)
+Wed May 18 16:05:08 2011   step 'ortholog' done (1 mins)
+
+Wed May 18 16:05:08 2011   create OrthologTaxon table  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:05:11 2011   step 'orthologTaxon' done (1 mins)
+
+Wed May 18 16:05:11 2011   create OrthologAvgScore table  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:05:14 2011   step 'orthologAvg' done (1 mins)
+
+Wed May 18 16:05:14 2011   create OrthologAvgScore index  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:05:14 2011   step 'orthologAvgIndex' done (1 mins)
+
+Wed May 18 16:05:14 2011   populate Ortholog110 table, including normalized_score  (Benchmark dataset took 2 min for this step)
+Wed May 18 16:06:04 2011   step 'orthologsNormalization' done (1 mins)
+
+Wed May 18 16:06:04 2011 Constructing inParalog tables
+Wed May 18 16:06:04 2011   create BestInterTaxonScore  (Benchmark dataset took 5 min for this step)
+Wed May 18 16:06:22 2011   step 'bestInterTaxonScore' done (1 mins)
+
+Wed May 18 16:06:22 2011   create bis_uids_ix index on BestQueryTaxonScore  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:06:24 2011   step 'bis_uids_ix' done (1 mins)
+
+Wed May 18 16:06:24 2011   create UniqueSimSeqsQueryId  (Benchmark dataset took 25 min for this step)
+Wed May 18 16:06:26 2011   step 'uniqueSimSeqsQueryId' done (1 mins)
+
+Wed May 18 16:06:26 2011   create ust_qids_ix index on UniqueSimSeqsQueryId  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:06:27 2011   step 'ust_qids_ix' done (1 mins)
+
+Wed May 18 16:06:27 2011   create BetterHit table  (Benchmark dataset took 3 hours for this step)
+Wed May 18 16:07:07 2011   step 'betterHit' done (1 mins)
+
+Wed May 18 16:07:07 2011   create better_hit_ix index on BetterHit  (Benchmark dataset took 25 min for this step)
+Wed May 18 16:07:07 2011   step 'better_hit_ix' done (1 mins)
+
+Wed May 18 16:07:07 2011   create InParalogTemp table  (Benchmark dataset took 15 min for this step)
+Wed May 18 16:07:07 2011   step 'inParalog' done (1 mins)
+
+Wed May 18 16:07:07 2011   create InParalogTaxonAvg table  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:07:07 2011   step 'inParalogTaxonAvg' done (1 mins)
+
+Wed May 18 16:07:07 2011   create OrthologUniqueId table  (Benchmark dataset took 5 min for this step)
+Wed May 18 16:07:17 2011   step 'orthologUniqueId' done (1 mins)
+
+Wed May 18 16:07:17 2011   create unique ortholog_unique_id_ix index  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:07:18 2011   step 'orthologUniqueIdIndex' done (1 mins)
+
+Wed May 18 16:07:18 2011   create InParalogOrthologTaxonAvg table  (Benchmark dataset took 10 min for this step)
+Wed May 18 16:07:19 2011   step 'inParalogOrthologTaxonAvg' done (1 mins)
+
+Wed May 18 16:07:19 2011   create InParalogAvgScore table  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:07:19 2011   step 'inParalogAvg' done (1 mins)
+
+Wed May 18 16:07:19 2011   create InParalogAvgScore index  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:07:19 2011   step 'inParalogAvgIndex' done (1 mins)
+
+Wed May 18 16:07:19 2011   populate InParalog110 table, including normalized_score  (Benchmark dataset took 3 min for this step)
+Wed May 18 16:07:19 2011   step 'inParalogsNormalization' done (1 mins)
+
+Wed May 18 16:07:19 2011 Constructing coOrtholog tables
+Wed May 18 16:07:19 2011   create InParalog2Way  (Benchmark dataset took 1.5 hours for this step)
+Wed May 18 16:07:19 2011   step 'inParalog2Way' done (1 mins)
+
+Wed May 18 16:07:19 2011   index in2a_ix  (Benchmark dataset took 45 min for this step)
+Wed May 18 16:07:19 2011   step 'in2a_ix' done (1 mins)
+
+Wed May 18 16:07:19 2011   index in2b_ix  (Benchmark dataset took 45 min for this step)
+Wed May 18 16:07:19 2011   step 'in2b_ix' done (1 mins)
+
+Wed May 18 16:07:19 2011   create Ortholog2Way  (Benchmark dataset took 1 hours for this step)
+Wed May 18 16:09:34 2011   step 'ortholog2Way' done (2 mins)
+
+Wed May 18 16:09:34 2011   index ortholog2way_ix  (Benchmark dataset took 5 min for this step)
+Wed May 18 16:11:16 2011   step 'ortholog2WayIndex' done (1 mins)
+
+Wed May 18 16:11:16 2011   create InParalogOrthologInParalog  (Benchmark dataset took 20 min for this step)
+Wed May 18 16:11:18 2011   step 'inParalogOrthologInParalog' done (1 mins)
+
+Wed May 18 16:11:18 2011   create InParalogOrtholog  (Benchmark dataset took 15 min for this step)
+Wed May 18 16:11:19 2011   step 'inParalogOrtholog' done (1 mins)
+
+Wed May 18 16:11:19 2011   create CoOrthologCandidate  (Benchmark dataset took 1 hour for this step)
+Wed May 18 16:11:21 2011   step 'coOrthologCandidate' done (1 mins)
+
+Wed May 18 16:11:21 2011   create CoOrthologNotOrtholog table  (Benchmark dataset took 10 min for this step)
+Wed May 18 16:11:32 2011   step 'coOrthologNotOrtholog' done (1 mins)
+
+Wed May 18 16:11:32 2011   index coortholog_not_ortholog_ix  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:11:32 2011   step 'coOrthologNotOrthologIndex' done (1 mins)
+
+Wed May 18 16:11:32 2011   create CoOrthologTemp table  (Benchmark dataset took 2 hours for this step)
+Wed May 18 16:14:35 2011   step 'coOrtholog' done (3 mins)
+
+Wed May 18 16:14:35 2011   create CoOrthologTaxon table  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:14:35 2011   step 'coOrthologTaxon' done (1 mins)
+
+Wed May 18 16:14:35 2011   create CoOrthologAvgScore table  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:14:35 2011   step 'coOrthologAvg' done (1 mins)
+
+Wed May 18 16:14:35 2011   create CoOrthologAvgScore index  (Benchmark dataset took 1 min for this step)
+Wed May 18 16:14:35 2011   step 'coOrthologAvgIndex' done (1 mins)
+
+Wed May 18 16:14:35 2011   populate CoOrtholog110 table, including normalized_score  (Benchmark dataset took 2 min for this step)
+Wed May 18 16:14:35 2011   step 'coOrthologsNormalization' done (1 mins)
+

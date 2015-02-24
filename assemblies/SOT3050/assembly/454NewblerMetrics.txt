@@ -1,0 +1,265 @@
+/***************************************************************************
+**
+**      454 Life Sciences Corporation
+**         Newbler Metrics Results
+**
+**      Date of Assembly: 2010/07/21 10:03:57
+**      Project Directory: /data/assemblies/1245
+**      Software Release: 2.5  (20100510_1124)
+**
+***************************************************************************/
+
+/*
+**  Input information.
+*/
+
+runData
+{
+	file
+	{
+		path = "/media_root/sequences/2010-07/1146.sff";
+
+		numberOfReads = 133283, 133271;
+		numberOfBases = 40967776, 40900338;
+	}
+
+}
+
+/*
+**  Operation metrics.
+*/
+
+runMetrics
+{
+	totalNumberOfReads = 133271; 
+	totalNumberOfBases = 40900338; 
+
+	numberSearches   = 29315;
+	seedHitsFound    = 7507300, 256.09;
+	overlapsFound    = 1139364, 38.87, 15.18%;
+	overlapsReported = 992369, 33.85, 87.10%;
+	overlapsUsed     = 257200, 8.77, 25.92%;
+}
+
+readAlignmentResults
+{
+	file
+	{
+		path = "/media_root/sequences/2010-07/1146.sff";
+
+		numAlignedReads     = 130528, 97.94%;
+		numAlignedBases     = 40610803, 99.29%;
+		inferredReadError  = 0.96%, 389077;
+	}
+
+}
+
+/*
+** Consensus distribution information.
+*/
+consensusDistribution
+{
+	fullDistribution
+	{
+		signalBin =  0.0, 122988;
+		signalBin =  0.5, 8;
+		signalBin =  0.6, 23;
+		signalBin =  0.7, 985;
+		signalBin =  0.8, 95642;
+		signalBin =  0.9, 904539;
+		signalBin =  1.0, 459989;
+		signalBin =  1.1, 17843;
+		signalBin =  1.2, 562;
+		signalBin =  1.3, 48;
+		signalBin =  1.4, 8;
+		signalBin =  1.5, 37;
+		signalBin =  1.6, 174;
+		signalBin =  1.7, 3729;
+		signalBin =  1.8, 70885;
+		signalBin =  1.9, 252510;
+		signalBin =  2.0, 91589;
+		signalBin =  2.1, 4514;
+		signalBin =  2.2, 123;
+		signalBin =  2.3, 13;
+		signalBin =  2.4, 5;
+		signalBin =  2.5, 43;
+		signalBin =  2.6, 263;
+		signalBin =  2.7, 3150;
+		signalBin =  2.8, 26239;
+		signalBin =  2.9, 58623;
+		signalBin =  3.0, 22379;
+		signalBin =  3.1, 1670;
+		signalBin =  3.2, 55;
+		signalBin =  3.3, 2;
+		signalBin =  3.4, 10;
+		signalBin =  3.5, 56;
+		signalBin =  3.6, 300;
+		signalBin =  3.7, 1677;
+		signalBin =  3.8, 7402;
+		signalBin =  3.9, 13612;
+		signalBin =  4.0, 11012;
+		signalBin =  4.1, 3478;
+		signalBin =  4.2, 569;
+		signalBin =  4.3, 61;
+		signalBin =  4.4, 6;
+		signalBin =  4.5, 34;
+		signalBin =  4.6, 113;
+		signalBin =  4.7, 506;
+		signalBin =  4.8, 2509;
+		signalBin =  4.9, 5873;
+		signalBin =  5.0, 4126;
+		signalBin =  5.1, 906;
+		signalBin =  5.2, 90;
+		signalBin =  5.3, 20;
+		signalBin =  5.4, 16;
+		signalBin =  5.5, 47;
+		signalBin =  5.6, 112;
+		signalBin =  5.7, 303;
+		signalBin =  5.8, 747;
+		signalBin =  5.9, 1356;
+		signalBin =  6.0, 1502;
+		signalBin =  6.1, 579;
+		signalBin =  6.2, 117;
+		signalBin =  6.3, 42;
+		signalBin =  6.4, 18;
+		signalBin =  6.5, 29;
+		signalBin =  6.6, 76;
+		signalBin =  6.7, 161;
+		signalBin =  6.8, 261;
+		signalBin =  6.9, 338;
+		signalBin =  7.0, 256;
+		signalBin =  7.1, 111;
+		signalBin =  7.2, 29;
+		signalBin =  7.3, 14;
+		signalBin =  7.4, 14;
+		signalBin =  7.5, 4;
+		signalBin =  7.6, 42;
+		signalBin =  7.7, 20;
+		signalBin =  7.8, 27;
+		signalBin =  7.9, 27;
+		signalBin =  8.0, 17;
+		signalBin =  8.1, 5;
+		signalBin =  8.2, 2;
+		signalBin =  8.3, 1;
+		signalBin =  8.4, 6;
+		signalBin =  8.5, 3;
+		signalBin =  8.6, 2;
+		signalBin =  8.7, 5;
+		signalBin =  9.0, 2;
+		signalBin =  9.1, 1;
+		signalBin =  9.2, 2;
+		signalBin =  9.5, 1;
+		signalBin = 10.5, 2;
+		signalBin = 10.9, 2;
+		signalBin = 12.8, 1;
+	}
+
+	distributionPeaks
+	{
+		signalPeak = 1, 0.96;
+		signalPeak = 2, 1.94;
+		signalPeak = 3, 2.94;
+		signalPeak = 4, 3.96;
+		signalPeak = 5, 4.96;
+		signalPeak = 6, 5.98;
+		signalPeak = 7, 6.92;
+	}
+
+	thresholdsUsed
+	{
+		threshold = 0, 1, 0.48;
+		threshold = 1, 2, 1.44;
+		threshold = 2, 3, 2.44;
+		threshold = 3, 4, 3.36;
+		threshold = 4, 5, 4.42;
+		threshold = 5, 6, 5.40;
+		threshold = 6, 7, 6.42;
+
+		interpolationAmount = 0.99;
+	}
+}
+
+
+/*
+**  Alignment depths.
+*/
+alignmentDepths
+{
+	      1 = 7042;
+	      2 = 6140;
+	    3-4 = 13600;
+	    5-6 = 29119;
+	    7-8 = 67679;
+	   9-10 = 127722;
+	  11-13 = 319727;
+	  14-16 = 414206;
+	  17-19 = 425555;
+	  20-22 = 341808;
+	  23-25 = 242641;
+	  26-28 = 147393;
+	  29-31 = 82375;
+	  32-34 = 43521;
+	  35-38 = 29329;
+	  39-42 = 15522;
+	  43-46 = 9206;
+	  47-50 = 4852;
+	  51-55 = 2888;
+	  56-60 = 1440;
+	  61-70 = 1309;
+	  71-80 = 1479;
+	  81-90 = 1560;
+	 91-100 = 2559;
+	101-140 = 2624;
+	141-180 = 1585;
+	181-240 = 29;
+	241-300 = 76;
+	301-400 = 0;
+	401-500 = 0;
+	501-600 = 0;
+	601-700 = 0;
+	701-850 = 0;
+	851-1000 = 0;
+	  1001+ = 0;
+
+	peakDepth            = 17.0;
+	estimatedGenomeSize  = "2.4 MB";
+}
+
+/*
+**  Consensus results.
+*/
+consensusResults
+{
+	readStatus
+	{
+		numAlignedReads    = 130528, 97.94%;
+		numAlignedBases    = 40610803, 99.29%;
+		inferredReadError = 0.96%, 389077;
+
+		numberAssembled = 128628;
+		numberPartial   = 1900;
+		numberSingleton = 383;
+		numberRepeat    = 126;
+		numberOutlier   = 197;
+		numberTooShort  = 2037;
+	}
+
+	largeContigMetrics
+	{
+		numberOfContigs   = 89;
+		numberOfBases     = 2164427;
+
+		avgContigSize     = 24319;
+		N50ContigSize     = 50663;
+		largestContigSize = 136350;
+
+		Q40PlusBases      = 2153620, 99.50%;
+		Q39MinusBases     = 10807, 0.50%;
+	}
+
+	allContigMetrics
+	{
+		numberOfContigs = 114;
+		numberOfBases   = 2170856;
+	}
+}

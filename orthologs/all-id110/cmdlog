@@ -1,0 +1,12 @@
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclInstallSchema orthomcl_config log
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclFilterFasta input 50 2
+Running /home/nick/blast-2.2.20/bin//formatdb -p T -i goodProteins.fasta
+Running /home/nick/blast-2.2.20/bin//blastall -p blastp -F 'm S' -v 100000 -b 100000 -e 1e-05 -i goodProteins.fasta -d goodProteins.fasta -m 8 -a 3 > blast_results.txt
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclBlastParser blast_results.txt input >parsed_blast.txt
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclBlastParser blast_results.txt input >parsed_blast.txt
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclLoadBlast orthomcl_config parsed_blast.txt
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclPairs orthomcl_config log cleanup=only
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclPairs orthomcl_config log cleanup=no
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclDumpPairsFiles orthomcl_config
+Running /home/nick/orthologs/mcl-09-182/src/shmcl//mcl mclInput -I 1.5 --abc
+Running /home/nick/orthologs/orthomclSoftware-v2.0-beta-6/bin//orthomclMclToGroups COG 0001 <out.mclInput.I15 >groups.txt
